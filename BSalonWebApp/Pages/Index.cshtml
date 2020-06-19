@@ -1,0 +1,70 @@
+﻿@page
+@model BSalonWebApp.Pages.IndexModel
+@{
+	ViewData["Title"] = "Главная | К НОГТЬЮ";
+}
+
+<link href="~/css/Index.css" rel="stylesheet" />
+
+<div class="maintitle">
+	<h1>"К НОГТЮ"</h1>
+	<h3>Салон красоты № 1</h3>
+</div>
+
+<div class="recordlist">
+	<div class="record">
+		<img src="~/imgs/temp.png" />
+		<h2>Аппаратный маникюр</h2>
+		<p>1ч.</p>
+		<p>₽1500</p>
+		<a href="#" class="btn">Записаться</a>
+	</div>
+	<div class="record">
+		<img src="~/imgs/temp.png" />
+		<h2>Копия Аппаратный маникюр</h2>
+		<p>1ч.</p>
+		<p>₽1500</p>
+		<a href="#" class="btn">Записаться</a>
+	</div>
+	<div class="record">
+		<img src="~/imgs/temp.png" />
+		<h2>Копия Аппаратный маникюр</h2>
+		<p>1ч.</p>
+		<p>₽1500</p>
+		<a href="#" class="btn">Записаться</a>
+	</div>
+</div>
+
+<div class="quote">
+	<div class="text">
+		<p class="p1">«Воля к победе, желание добиться успеха, стремление полностью раскрыть свои возможности… вот те ключи, которые откроют дверь к личному совершенству».</p>
+		<p class="p2">Конфуций</p>
+	</div>
+</div>
+
+<div class="imageBlock">
+	<div class="imagelist">
+		<img src="~/imgs/temp.png" />
+		<img src="~/imgs/temp.png" />
+		<img src="~/imgs/temp.png" />
+		<br />
+		<img src="~/imgs/temp.png" />
+		<img src="~/imgs/temp.png" />
+		<img src="~/imgs/temp.png" />
+	</div>
+	<button id="showmore" onclick="@await Component.InvokeAsync("ShowMore")"></button>
+</div>
+
+<div class="feedback">
+
+</div>
+
+<div class="time">
+
+</div>
+
+<script>
+$("#showmore").click(function(){
+	$("PageList").load("@Url.Action("ShowMore")");
+	});</script>
+

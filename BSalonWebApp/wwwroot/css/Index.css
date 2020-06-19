@@ -1,0 +1,215 @@
+﻿
+/*Layaout*/
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-image: url('../imgs/bg.jpg');
+	background-attachment: fixed;
+	background-size: auto;
+	background-repeat: repeat;
+}
+
+main {
+	width:100%;
+	background-color:white;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+.bglayout {
+	width: 100%;
+	height: auto;
+	background-color: #ffffff;
+	text-align: center;
+}
+
+.bgPage {
+	width:100%;
+	background:white;
+}
+
+.title {
+	padding-top: 5%;
+	font-size: 32px;
+	text-decoration: none;
+}
+
+.tabmenu {
+	margin: 50px 0 0 0;
+	padding-bottom: 50px;
+}
+
+.ullist {
+	list-style-type: none;
+}
+
+.itemmenu {
+	display: inline;
+	text-decoration: none;
+	margin-left: 23px;
+	text-decoration: none;
+}
+
+.footer {
+	text-align: center;
+	width: 100%;
+	height: auto;
+	background-color: #ffffff;
+}
+
+.footerimgs {
+	padding: 4%;
+}
+
+.footerinfo {
+	padding-bottom: 2%;
+}
+/* -----
+SVG Icons - svgicons.sparkk.fr
+----- */
+.svg-icon {
+	width: 2em;
+	height: 2em;
+}
+
+	.svg-icon path,
+	.svg-icon polygon,
+	.svg-icon rect {
+		fill: black;
+	}
+
+	.svg-icon circle {
+		stroke: black;
+		stroke-width: 1;
+	}
+
+/*Index*/
+
+.maintitle {
+	width: 100%;
+	height: 740px;
+	max-height: 740px;
+	text-align: center;
+}
+
+	.maintitle > h1 {
+		color: white;
+		position: relative;
+		top: 40%;
+		margin-bottom: 3%;
+	}
+
+	.maintitle > h3 {
+		color: white;
+		position: relative;
+		top: 40%;
+		margin-bottom: 40%;
+	}
+
+.recordlist {
+	background-color: white;
+	padding: 5%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.record {
+	width: 250px;
+	margin: 2% 5%;
+	height: auto;
+	border: 1px solid rgba(0, 0, 0, 0.44);
+}
+
+	.record > img {
+		width: 250px;
+		height: 250px;
+	}
+
+	.record > h2 {
+		margin-left: 7%;
+	}
+
+		.record > h2::after {
+			display: block;
+			content: "";
+			height: 1px;
+			width: 93%;
+			background-color: black;
+			margin-top: 10px;
+		}
+
+	.record > p {
+		margin: 5% 1%;
+		margin-left: 7%;
+	}
+
+	.record > .btn {
+		display: block;
+		padding: 10px;
+		width: 50%;
+		color: white;
+		margin-left: 7%;
+		font-size: 20px;
+		margin-bottom: 20px;
+		background-color: rgba(220, 78, 147, 0.84);
+		border-radius: 3px;
+	}
+
+.quote {
+	width: 100%;
+	height: auto;
+	text-align: center;
+	background-image: url('../imgs/temp.png');
+	background-repeat: repeat;
+}
+
+	.quote > .text {
+		padding: 15% 20px;
+		height: 50%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.quote .p1 {
+		color: white;
+		margin-bottom: 20px;
+		font-size: 20px;
+	}
+
+	.quote .p2 {
+		color: white;
+		font-size: 15px;
+	}
+
+.imageBlock {
+	padding: 10% 20%;
+	height: auto;
+	background-color: white;
+	text-align: center;
+}
+
+	.imageBlock > .imagelist {
+	}
+
+	.imageBlock > a, .imageBlock > a:visited {
+		margin: 10px auto;
+		display: block;
+	}
+
+	.imageBlock > #showMore {
+		border: black solid;
+		font-size: 20px;
+		background-color: white;
+		padding: 5px;
+		cursor: pointer;
+		width: fit-content;
+	}
