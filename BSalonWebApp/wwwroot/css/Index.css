@@ -13,8 +13,8 @@ body {
 }
 
 main {
-	width:100%;
-	background-color:white;
+	width: 100%;
+	background-color: white;
 }
 
 a {
@@ -30,8 +30,8 @@ a {
 }
 
 .bgPage {
-	width:100%;
-	background:white;
+	width: 100%;
+	background: white;
 }
 
 .title {
@@ -194,22 +194,27 @@ SVG Icons - svgicons.sparkk.fr
 	padding: 10% 20%;
 	height: auto;
 	background-color: white;
-	text-align: center;
+	display: flex;
+	flex-direction: column;
 }
 
 	.imageBlock > .imagelist {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		flex-direction: row;
 	}
 
-	.imageBlock > a, .imageBlock > a:visited {
-		margin: 10px auto;
-		display: block;
-	}
+		.imageBlock > .imagelist > img {
+			width:30%;
+		}
 
-	.imageBlock > #showMore {
-		border: black solid;
-		font-size: 20px;
-		background-color: white;
-		padding: 5px;
-		cursor: pointer;
-		width: fit-content;
-	}
+#showMore {
+	border: black solid;
+	font-size: 20px;
+	background-color: white;
+	padding: 5px;
+	margin: 10px auto;
+	cursor: pointer;
+	width: fit-content;
+}
