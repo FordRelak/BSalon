@@ -16,10 +16,17 @@
 	<h3>Салон красоты № 1</h3>
 </div>
 
-<div class="recordlist">
+<div class="card-deck">
 	@foreach (var service in Model.Services)
 	{
-
+		<div class="card" style="">
+			<img class="card-img-top" src="~/imgs/temp.png" alt="Text" />
+			<div class="card-body">
+				<h5 class="card-title">@service.Title</h5>
+				<p class="card-text">@service.Info</p>
+				<a asp-page="/Record" asp-route-id="@service.Id" class="btn btn-light">Записаться</a>
+			</div>
+		</div>
 	}
 </div>
 
