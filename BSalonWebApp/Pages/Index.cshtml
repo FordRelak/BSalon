@@ -4,7 +4,12 @@
 	ViewData["Title"] = "Главная | К НОГТЬЮ";
 }
 
-<link href="~/css/Index.css" rel="stylesheet" />
+<link rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"
+	  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	  asp-fallback-href="~/lib/twitter-bootstrap/css/bootstrap.min.css" />
+
+<link href="~/css/Index.css"
+	  rel="stylesheet" />
 
 <div class="maintitle">
 	<h1>"К НОГТЮ"</h1>
@@ -17,7 +22,7 @@
 		<h2>Аппаратный маникюр</h2>
 		<p>1ч.</p>
 		<p>₽1500</p>
-		<a href="#" class="btn">Записаться</a>
+		<button class="btn" asp-page="/Record" asp-route-id="">Записаться</button>
 	</div>
 	<div class="record">
 		<img src="~/imgs/temp.png" />
@@ -65,7 +70,10 @@
 <div class="time">
 
 </div>
-
-<script asp-></script>
-<script src="~/lib/jquery/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+		asp-fallback-src="~/lib/jquery/jquery.min.js"
+		integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+		crossorigin="anonymous">
+</script>
 <script src="~/js/ShowMore.js"></script>
+<script src="~/js/ChoiceTimeToRecord.js"></script>

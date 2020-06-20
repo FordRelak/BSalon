@@ -11,6 +11,8 @@ namespace BSalonWebApp.Pages
     {
         public void OnGet()
         {
+
         }
+
     }
 }
