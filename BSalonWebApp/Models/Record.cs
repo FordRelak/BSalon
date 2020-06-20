@@ -1,5 +1,6 @@
 ﻿using BSalonWebApp.Models.SalonServices;
 using BSalonWebApp.Models.Workers;
+using System;
 
 namespace BSalonWebApp.Models
 {
@@ -11,12 +12,14 @@ namespace BSalonWebApp.Models
 
         public string MiddleName { get; set; }
 
-        public string Time { get; set; }
+        public DateTime Time { get; set; }
 
         public string PhoneNumber { get; set; }
 
         public Service ServiceTitle { get; set; }
 
         public Worker Worker { get; set; }
+
+        public bool IsFree { get; set; } = true;
     }
 }

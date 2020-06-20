@@ -7,5 +7,7 @@
         public uint Price { get; set; }
 
         public string Title { get; set; }
+
+        public string Info { get; set; }
     }
 }

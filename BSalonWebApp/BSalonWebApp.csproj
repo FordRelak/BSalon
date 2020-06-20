@@ -13,7 +13,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\SalonServices\Services\" />
+    <Folder Include="Models\SalonServices\Services\PedicureType\" />
+    <Folder Include="Models\SalonServices\Services\NailExtensionType\" />
+    <Folder Include="Models\SalonServices\Services\ManicureType\" />
+    <Folder Include="Models\SalonServices\Services\NailStrengtheningAndTreatmentType\" />
+    <Folder Include="Models\SalonServices\Services\NailDesignType\" />
+    <Folder Include="Models\SalonServices\Services\DepilationType\" />
+    <Folder Include="Models\SalonServices\Services\NailCoatingType\" />
   </ItemGroup>
 
 </Project>
