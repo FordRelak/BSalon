@@ -22,7 +22,7 @@ namespace BSalonWebApp
                 .AddRazorRuntimeCompilation();
 
             services.AddDbContext<BSalonDbContext>(o =>
-                o.UseSqlServer(@"Data Source=88.135.50.215; Initial Catalog=FSC_PC;
+                o.UseSqlServer(@"Data Source=88.135.50.215; Initial Catalog=BSalon;
                                  User ID=Misha; Password=789xxx44XX; Connect Timeout=30;
                                  Encrypt=False; TrustServerCertificate=False;
                                  ApplicationIntent=ReadWrite; MultiSubnetFailover=False"));

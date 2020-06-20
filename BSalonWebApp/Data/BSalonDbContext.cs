@@ -6,7 +6,7 @@ namespace BSalonWebApp.Data
 {
     public class BSalonDbContext : DbContext
     {
-        public DbSet<WorkDay> WorkDays { get; set; }
+        //public DbSet<WorkDay> WorkDays { get; set; }
 
         public DbSet<Service> Services { get; set; }
 

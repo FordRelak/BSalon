@@ -13,26 +13,18 @@
 		<h2>Наши услуги</h2>
 
 		<div class="recordlist">
-			<div class="record">
-				<img src="~/imgs/temp.png" />
-				<h2>Аппаратный маникюр</h2>
-				<p>1ч.</p>
-				<p>₽1500</p>
-				<a href="#" class="btn">Записаться</a>
-			</div>
-			<div class="record">
-				<img src="~/imgs/temp.png" />
-				<h2>Копия Аппаратный маникюр</h2>
-				<p>1ч.</p>
-				<p>₽1500</p>
-				<a href="#" class="btn">Записаться</a>
-			</div>
-			<div class="record">
-				<img src="~/imgs/temp.png" />
-				<h2>Копия Аппаратный маникюр</h2>
-				<p>1ч.</p>
-				<p>₽1500</p>
-				<a href="#" class="btn">Записаться</a>
+			<div class="card-deck">
+				@foreach (var service in Model.Services)
+				{
+					<div class="card" style="width:18em">
+						<img class="card-img-top" src="~/imgs/temp.png" alt="Text" />
+						<div class="card-body">
+							<h5 class="card-title">@service.Title</h5>
+							<p class="card-text text-truncate">@service.Info</p>
+							<a asp-page="/Record" asp-route-id="@service.Id" class="btn btn-light">Записаться</a>
+						</div>
+					</div>
+				}
 			</div>
 		</div>
 	</div>

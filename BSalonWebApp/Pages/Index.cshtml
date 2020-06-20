@@ -4,9 +4,7 @@
 	ViewData["Title"] = "Главная | К НОГТЬЮ";
 }
 
-<link rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"
-	  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-	  asp-fallback-href="~/lib/twitter-bootstrap/css/bootstrap.min.css" />
+
 
 <link href="~/css/Index.css"
 	  rel="stylesheet" />
@@ -16,20 +14,21 @@
 	<h3>Салон красоты № 1</h3>
 </div>
 
-<div class="card-deck">
-	@foreach (var service in Model.Services)
-	{
-		<div class="card" style="">
-			<img class="card-img-top" src="~/imgs/temp.png" alt="Text" />
-			<div class="card-body">
-				<h5 class="card-title">@service.Title</h5>
-				<p class="card-text">@service.Info</p>
-				<a asp-page="/Record" asp-route-id="@service.Id" class="btn btn-light">Записаться</a>
+<div class="recordlist">
+	<div class="card-deck">
+		@foreach (var service in Model.Services)
+		{
+			<div class="card" style="width:18em">
+				<img class="card-img-top" src="~/imgs/temp.png" alt="Text" />
+				<div class="card-body">
+					<h5 class="card-title">@service.Title</h5>
+					<p class="card-text text-truncate">@service.Info</p>
+					<a asp-page="/Record" asp-route-id="@service.Id" class="btn btn-light">Записаться</a>
+				</div>
 			</div>
-		</div>
-	}
+		}
+	</div>
 </div>
-
 <div class="quote">
 	<div class="text">
 		<p class="p1">«Воля к победе, желание добиться успеха, стремление полностью раскрыть свои возможности… вот те ключи, которые откроют дверь к личному совершенству».</p>

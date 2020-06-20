@@ -1,11 +1,15 @@
 ﻿using BSalonWebApp.Models.SalonServices;
 using BSalonWebApp.Models.Workers;
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace BSalonWebApp.Models
 {
     public class Record
     {
+        [Key]
+        public int Id { get; set; }
+
         public string Name { get; set; }
 
         public string SecondName { get; set; }

@@ -22,6 +22,11 @@ a {
 	color: black;
 }
 
+	a:hover, a:visited {
+		text-decoration: none;
+		color: #000 !important;
+	}
+
 .bglayout {
 	width: 100%;
 	height: auto;
@@ -51,8 +56,10 @@ a {
 
 .itemmenu {
 	display: inline;
-	text-decoration: none;
 	margin-left: 23px;
+}
+
+.itemmenu a {
 	text-decoration: none;
 }
 

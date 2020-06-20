@@ -10,10 +10,13 @@ namespace BSalonWebApp.Pages
 {
     public class RecordModel : PageModel
     {
-        public void OnGet()
+        public IActionResult OnGet(int? id)
         {
-
-
+            if (id is null)
+            {
+                return Redirect(Url.Page("OnlineRecords"));
+            }
+            return Page();
         }
     }
 }

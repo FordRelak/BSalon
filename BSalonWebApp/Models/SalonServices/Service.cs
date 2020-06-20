@@ -4,12 +4,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace BSalonWebApp.Models.SalonServices
 {
     [Table("Service")]
-    public abstract class Service
+    public class Service
     {
         [Key]
         public int Id { get; set; }
 
-        public uint Price { get; set; }
+        public int Price { get; set; }
 
         public string Title { get; set; }
 
