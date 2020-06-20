@@ -1,7 +1,12 @@
-﻿namespace BSalonWebApp.Models.SalonServices
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace BSalonWebApp.Models.SalonServices
 {
+    [Table("Service")]
     public abstract class Service
     {
+        [Key]
         public int Id { get; set; }
 
         public uint Price { get; set; }
