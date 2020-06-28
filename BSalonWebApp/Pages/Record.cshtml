@@ -10,31 +10,42 @@
 <div class="bgPage">
 
 	<div class="container">
-
+		@* Кнопка назад *@
 		<div class="backCon">
 			<a href="#" class="btnBack">
 				<img src="~/imgs/left-arrow.svg" />
 				<span>Назад</span>
 			</a>
 		</div>
-
+		@* Название сервиса *@
 		<div class="mainrec">
 			<div class="recordd">
 				<h2>@Model.Service.Title</h2>
 				<p>@Model.Service.Price&#8381</p>
 				<button type="button" class="btn">Записаться</button>
 			</div>
-			<div>	
-				@foreach (var workday in Model.WorkDays)
+			@* Расписание *@
+			<div class="d-flex">
+				@foreach (var record in Model.WorkDay.Records)
 				{
-					foreach (var record in workday.Records)
+					if (!record.IsFree)
 					{
-						<p>@record.Time == @record.IsFree</p>
+						<button class="btn btn-danger m-2 ml-0">@record.Time.Hour:@(record.Time.Minute)0</button>
+					}
+					else
+					{
+						<form asp-page-handler="AddTime" method="post"></form>
+						<input type="submit" name="time" value="@record.Time.Hour:@(record.Time.Minute)0" class="btn btn-success m-2 ml-0" />
 					}
 				}
 			</div>
-			<img src="~/imgs/temp.png" />
+			@* Форма ФИО *@
+			<div>
 
+			</div>
+
+			<img src="~/imgs/temp.png" />
+			@* Контактная информация *@
 			<div class="contact">
 				<h3>Адрес и контактная информация</h3>
 				<h4>Эл. почта:</h4>

@@ -1,12 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using BSalonWebApp.Data;
-using BSalonWebApp.Models.Schedule;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -27,7 +21,6 @@ namespace BSalonWebApp
                                  User ID=Misha; Password=789xxx44XX; Connect Timeout=30;
                                  Encrypt=False; TrustServerCertificate=False;
                                  ApplicationIntent=ReadWrite; MultiSubnetFailover=False"));
-            services.AddHostedService<RecordsTableUpdater>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

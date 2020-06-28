@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 namespace BSalonWebApp.Pages
@@ -13,11 +14,16 @@ namespace BSalonWebApp.Pages
     {
         private readonly BSalonDbContext _context;
 
+        [Required, StringLength(13)]
+        public string Name { get; set; }
+        [Required, StringLength(11)]
+        public string Phone { get; set; }
+
         public Service Service { get; set; }
 
-        public List<WorkDay> WorkDays { get; set; } =
-           new List<WorkDay>();
+        //public IEnumerable<Record> Records { get; private set; }
 
+        public WorkDay WorkDay { get; set; }
 
         public RecordModel(BSalonDbContext context) =>
             _context = context;
@@ -29,15 +35,14 @@ namespace BSalonWebApp.Pages
                 return Redirect(Url.Page("OnlineRecords"));
             }
 
+            //Records = _context.Records.AsEnumerable().Where(day => day);
+
+            WorkDay = new WorkDay(_context.Records.ToList(), DateTime.Now.Date);
+
+            
+            
             Service = _context.Services.First(serviceTitle => serviceTitle.Title == title);
-
-            for (int i = 0; i <= 30; i++)
-            {
-                var TempDay = DateTime.Now.Date.AddDays(i);
-                var DayRecords = _context.Records.Where(x => x.Time.Date == TempDay).ToList();
-                WorkDays.Add(new WorkDay(DayRecords, TempDay));
-            }
-
+            
             return Page();
         }
     }
