@@ -24,8 +24,8 @@
 				<p>@Model.Service.Price&#8381</p>
 				<button type="button" class="btn">Записаться</button>
 			</div>
-			<div>
-				@foreach (var workday in Model.TimeTable.WorkDays)
+			<div>	
+				@foreach (var workday in Model.WorkDays)
 				{
 					foreach (var record in workday.Records)
 					{
