@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BSalonWebApp.Models.SalonServices
 {
-    [Table("Service")]
+    [Table("Services")]
     public class Service
     {
         [Key]

@@ -2,9 +2,11 @@
 using BSalonWebApp.Models.Workers;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BSalonWebApp.Models
 {
+    [Table("Records")]
     public class Record
     {
         [Key]

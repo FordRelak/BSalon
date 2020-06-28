@@ -1,21 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Threading.Tasks;
+﻿using BSalonWebApp.Data;
+using BSalonWebApp.Models.SalonServices;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Linq;
 
 namespace BSalonWebApp.Pages
 {
     public class RecordModel : PageModel
     {
-        public IActionResult OnGet(int? id)
+        private readonly BSalonDbContext _context;
+
+
+        public Service Service { get; set; }
+
+        public RecordModel(BSalonDbContext context) =>
+            _context = context;
+
+        public IActionResult OnGet(string title)
         {
-            if (id is null)
+            if (title is null)
             {
                 return Redirect(Url.Page("OnlineRecords"));
             }
+
+            Service = _context.Services.First(serviceTitle => serviceTitle.Title == title);
+
             return Page();
         }
     }

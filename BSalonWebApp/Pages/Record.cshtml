@@ -1,4 +1,4 @@
-﻿@page "/Record/{id:int?}"
+﻿@page "/Record/{title?}"
 @model BSalonWebApp.Pages.RecordModel
 @{
 	ViewData["Title"] = "Record";
@@ -20,8 +20,8 @@
 
 		<div class="mainrec">
 			<div class="recordd">
-				<h2>Аппаратный маникюр</h2>
-				<p>1 ч. | 1500р.</p>
+				<h2>@Model.Service.Title</h2>
+				<p>@Model.Service.Price&#8381</p>
 				<button type="button" class="btn">Записаться</button>
 			</div>
 

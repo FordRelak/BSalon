@@ -1,12 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using BSalonWebApp.Data;
 using BSalonWebApp.Models.SalonServices;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace BSalonWebApp.Pages
 {
@@ -14,7 +11,6 @@ namespace BSalonWebApp.Pages
     {
         private readonly BSalonDbContext _context;
 
-        [BindProperty]
         public IList<Service> Services { get; set; }
 
         public IndexModel(BSalonDbContext context) =>
