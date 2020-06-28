@@ -9,13 +9,16 @@ namespace BSalonWebApp.Models
 {
     public class WorkDay
     {
-        [Key]
-        [Column("ID")]
-        public int Id { get; set; }
-
         public List<Record> Records { get; set; }
 
         public DateTime DateTime { get; set; }
+
+
+        public WorkDay(List<Record> Records, DateTime DataTime)
+        {
+            this.Records = Records;
+            this.DateTime = DataTime;
+        }
 
         public WorkDay(DateTime DateTime)
         {
