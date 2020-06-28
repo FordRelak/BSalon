@@ -1,4 +1,5 @@
 ﻿using BSalonWebApp.Data;
+using BSalonWebApp.Models;
 using BSalonWebApp.Models.SalonServices;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -13,6 +14,8 @@ namespace BSalonWebApp.Pages
 
         public Service Service { get; set; }
 
+        public TimeTable TimeTable { get; set; }
+
         public RecordModel(BSalonDbContext context) =>
             _context = context;
 
@@ -25,6 +28,14 @@ namespace BSalonWebApp.Pages
 
             Service = _context.Services.First(serviceTitle => serviceTitle.Title == title);
 
+            TimeTable = new TimeTable();
+            TimeTable.WorkDays = TimeTable.GetWorkDaysList(_context);
+            
+            
+            
+            
+            
+            
             return Page();
         }
     }

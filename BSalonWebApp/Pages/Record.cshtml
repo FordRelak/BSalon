@@ -24,7 +24,15 @@
 				<p>@Model.Service.Price&#8381</p>
 				<button type="button" class="btn">Записаться</button>
 			</div>
-
+			<div>
+				@foreach (var workday in Model.TimeTable.WorkDays)
+				{
+					foreach (var record in workday.Records)
+					{
+						<p>@record.Time == @record.IsFree</p>
+					}
+				}
+			</div>
 			<img src="~/imgs/temp.png" />
 
 			<div class="contact">

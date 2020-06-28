@@ -11,8 +11,6 @@ namespace BSalonWebApp.Data
         public DbSet<Service> Services { get; set; }
 
         public BSalonDbContext(DbContextOptions<BSalonDbContext> options) : base(options)
-        {
-
-        }
+        { }
     }
 }

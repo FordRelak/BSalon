@@ -13,15 +13,15 @@ namespace BSalonWebApp.Models
 
         public List<WorkDay> GetWorkDaysList(BSalonDbContext _context)
         {
-            var lastDBRecord =  _context.Records.Last();
+            var lastDBRecord =  _context.Records.ToList().Last();
             if (lastDBRecord.Time.Date < DateTime.Now.Date.AddDays(30))
             {
                 for (int i = 1; i <= (DateTime.Now.Date.AddDays(30).Date - lastDBRecord.Time.Date).TotalDays; i++)
                 {
                     var TempDay = new WorkDay(lastDBRecord.Time.Date.AddDays(i));
                     foreach (var item in TempDay.Records)
-                        _context.Add(item);
-                    _context.SaveChanges();
+                        _context.Records.Add(item);
+                    _context.SaveChanges();                
                 }
             }
           

@@ -25,46 +25,46 @@ namespace BSalonWebApp.Models
             this.DateTime = DateTime;
 
             Records = new List<Record>();
-            Records.AddRange(new List<Record>() { 
+            Records.AddRange(new List<Record>() {
                 new Record()
                 {
-                    Time = new DateTime(DateTime.Year, DateTime.Month, DateTime.Day, 9,0,0),
-                    Worker = new Workers.Worker() { Name = "Sasha"}
+                    Time = new DateTime(DateTime.Year, DateTime.Month, DateTime.Day, 9,0,0)
+                 //   Worker = new Workers.Worker() { Name = "Sasha"}
                 },
                 new Record()
                 {
-                    Time = new DateTime(DateTime.Year, DateTime.Month, DateTime.Day, 10, 0, 0),
-                    Worker = new Workers.Worker() { Name = "Sasha" }
+                    Time = new DateTime(DateTime.Year, DateTime.Month, DateTime.Day, 10, 0, 0)
+                  //  Worker = new Workers.Worker() { Name = "Sasha" }
                 },
                 new Record()
                 {
-                    Time = new DateTime(DateTime.Year, DateTime.Month, DateTime.Day, 11, 0, 0),
-                    Worker = new Workers.Worker() { Name = "Sasha" }
+                    Time = new DateTime(DateTime.Year, DateTime.Month, DateTime.Day, 11, 0, 0)
+                   // Worker = new Workers.Worker() { Name = "Sasha" }
                 },
                 new Record()
                 {
-                    Time = new DateTime(DateTime.Year, DateTime.Month, DateTime.Day, 12, 0, 0),
-                    Worker = new Workers.Worker() { Name = "Sasha" }
+                    Time = new DateTime(DateTime.Year, DateTime.Month, DateTime.Day, 12, 0, 0)
+                   // Worker = new Workers.Worker() { Name = "Sasha" }
                 },
                 new Record()
                 {
-                    Time = new DateTime(DateTime.Year, DateTime.Month, DateTime.Day, 13, 0, 0),
-                    Worker = new Workers.Worker() { Name = "Sasha" }
+                    Time = new DateTime(DateTime.Year, DateTime.Month, DateTime.Day, 13, 0, 0)
+                    //Worker = new Workers.Worker() { Name = "Sasha" }
                 },
                 new Record()
                 {
-                    Time = new DateTime(DateTime.Year, DateTime.Month, DateTime.Day, 14, 0, 0),
-                    Worker = new Workers.Worker() { Name = "Sasha" }
+                    Time = new DateTime(DateTime.Year, DateTime.Month, DateTime.Day, 14, 0, 0)
+                   // Worker = new Workers.Worker() { Name = "Sasha" }
                 },
                 new Record()
                 {
-                    Time = new DateTime(DateTime.Year, DateTime.Month, DateTime.Day, 15, 0, 0),
-                    Worker = new Workers.Worker() { Name = "Sasha" }
+                    Time = new DateTime(DateTime.Year, DateTime.Month, DateTime.Day, 15, 0, 0)
+                    //Worker = new Workers.Worker() { Name = "Sasha" }
                 },
                 new Record()
                 {
-                    Time = new DateTime(DateTime.Year, DateTime.Month, DateTime.Day, 16, 0, 0),
-                    Worker = new Workers.Worker() { Name = "Sasha" }
+                    Time = new DateTime(DateTime.Year, DateTime.Month, DateTime.Day, 16, 0, 0)
+                    //Worker = new Workers.Worker() { Name = "Sasha" }
                 }});
         }
     }
