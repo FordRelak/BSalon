@@ -28,15 +28,9 @@ namespace BSalonWebApp.Pages
 
             Service = _context.Services.First(serviceTitle => serviceTitle.Title == title);
 
-            TimeTable = new TimeTable();
-            TimeTable.WorkDays = TimeTable.GetWorkDaysList(_context);
-            
-            
-            
-            
-            
-            
-            return Page();
+            //TimeTable = new TimeTable(_context);
+
+            //return Page();
         }
     }
 }
