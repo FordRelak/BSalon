@@ -17,22 +17,35 @@ namespace BSalonWebApp.Models
             // код = гавно
             // Слыш Э?!?!? Зато работает 
 
-
             DateTime = dataTime;
-            List<Record> records1 = new List<Record>();
-            int j = 0;
-            for (int i = 0; i < 8; i++)
+            List<Record> records1 = records.Where(record => record.Time.Date == DateTime.Date).OrderBy(r => r.Time.Hour).ToList();
+            var length = records1.Count();
+            for (int i = 0; i < 8 - length; i++)
             {
-                if (records.Count() > j)
+                records1.Add(new Record()
                 {
-                    if (records[j].Time.Hour == i + 9)
-                        records1.Add(records[j++]);
-                    else
-                        records1.Add(new Record() { Time = new DateTime(DateTime.Year, DateTime.Month, DateTime.Day, i + 9, 0, 0) });
-                }
-                else
-                    records1.Add(new Record() { Time = new DateTime(DateTime.Year, DateTime.Month, DateTime.Day, i + 9, 0, 0) });
+                    Time = new DateTime(DateTime.Year,
+                                        DateTime.Month,
+                                        DateTime.Day,
+                                        i + 9, 0, 0)
+                });
             }
+
+            records1.OrderBy(r => r.Time.Hour);
+
+            //int j = 0;
+            //for (int i = 0; i < 8; i++)
+            //{
+            //    if (records.Count() > j)
+            //    {
+            //        if (records[j].Time.Hour == i + 9)
+            //            records1.Add(records[j++]);
+            //        else
+            //            records1.Add(new Record() { Time = new DateTime(DateTime.Year, DateTime.Month, DateTime.Day, i + 9, 0, 0) });
+            //    }
+            //    else
+            //        records1.Add(new Record() { Time = new DateTime(DateTime.Year, DateTime.Month, DateTime.Day, i + 9, 0, 0) });
+            //}
             Records = records1;
         }
 
