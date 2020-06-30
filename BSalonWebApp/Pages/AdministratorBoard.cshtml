@@ -1,0 +1,56 @@
+﻿@page
+@model BSalonWebApp.Pages.AdministratorBoardModel
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+<link href="~/css/AdministratorBoard.css" rel="stylesheet" />
+
+
+<main>
+
+
+    <div class="container">
+        <h2>Панель администратора</h2>
+
+        <table class="table_custom">
+            <tr>
+                <th>Понедельник</th>
+                <th>Вторник</th>
+                <th>Среда</th>
+                <th>Четверг</th>
+                <th>Пятница</th>
+                <th>Суббота</th>
+                <th>Воскресенье</th>
+            </tr> <!--ряд с ячейками заголовков-->
+            @for (int i = 0; i < 5; i++)
+            {
+                <tr>
+                    @for (int j = 1; j <= 7; j++)
+                    {
+                        <td>
+
+                            @{
+                                if (Model.WorkDays.Count >= (i * 7 + j))
+                                    if (Model.WorkDays[i * 7 + j - 1].DateTime.DayOfWeek == (DayOfWeek)(j - 1))
+                                    {
+                                        <span></span>
+                                    }
+                                    else
+                                    {
+                                        <span>@string.Format("{0:M}", Model.WorkDays[i * 7 + j - 1].DateTime)</span>
+                                    }
+
+                            }
+
+
+                        </td>
+                    }
+
+                </tr><!--ряд с ячейками тела таблицы-->
+            }
+        </table>
+    </div>
+
+</main>
