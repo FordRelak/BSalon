@@ -34,7 +34,9 @@ namespace BSalonWebApp.Models
         [Display(Name = "Номер телефона")]
         [DataType(DataType.PhoneNumber)]
         [Required(ErrorMessage = "Необходимое поле")]
-        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Неверный номер телефона (999-999-9999)")]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$",
+                           ErrorMessage = "Неверный номер телефона (999-999-9999)")]
+
         public string PhoneNumber { get; set; }
 
         public int ServiceID { get; set; }

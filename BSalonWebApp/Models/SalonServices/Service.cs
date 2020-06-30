@@ -7,6 +7,7 @@ namespace BSalonWebApp.Models.SalonServices
     public class Service
     {
         [Key]
+        [Column("ID")]
         public int Id { get; set; }
 
         public int Price { get; set; }
