@@ -28,64 +28,44 @@
 			@* Расписание *@
 
 			<table class="table table-bordered">
-				<thead class="thead-dark"></thead>
-				<tr>
-					<td>Понедельник</td>
-					<td>Вторник</td>
-					<td>Среда</td>
-					<td>Четверг</td>
-					<td>Пятница</td>
-					<td>Суббота</td>
-					<td>Воскресенье</td>
-				</tr>
-				@for (int i = 0; i < 4; i++)
-				{
-					<tr class="">
-						@for (int j = 0; j < 7; j++)
-						{
-							if (DateTime.Now.DayOfWeek == DayOfWeek.Monday && j != 0)
-							{
-								break;
-							}
-							if (Model.WorkDay.First().Records.First().Time.DayOfWeek != DateTime.Now.DayOfWeek)
-							{
-								<td></td>
-							}
-							else
-							{
-								<td>
-									@string.Format("{0:M}", Model.WorkDay[i * 7 + j].Records[j].Time.Date)
-								</td>
-							}
-						}
+				<thead class="thead-dark">
+					<tr>
+						<th>Понедельник</th>
+						<th>Вторник</th>
+						<th>Среда</th>
+						<th>Четверг</th>
+						<th>Пятница</th>
+						<th>Суббота</th>
+						<th>Воскресенье</th>
 					</tr>
+				</thead>
+				@{					
+					@for (int i = 0; i < 4; i++)
+					{
+						int z = 0;
+						<tr class="">
+							@for (int j = 0; j < 7; j++)
+							{
+								if (((int)Model.WorkDay.First().Records.First().Time.DayOfWeek) - (j + 1) > 0 && i == 0)
+								{
+									<td></td>
+								}
+								else if (DateTime.Now.DayOfWeek == DayOfWeek.Monday && j != 0)
+								{
+									break;
+								}
+								else
+								{
+									<td>
+										@string.Format("{0:M}", Model.WorkDay[i * 7 + z].Records[z++].Time.Date)
+									</td>
+								}
+							}
+						</tr>
+					}
 				}
 
 			</table>
-
-
-
-			@*<div class="d-flex flex-wrap">
-					<span class="mb-2">@Model.WorkDay.Records.First().Time.Date.Day/@Model.WorkDay.Records.First().Time.Date.Month</span>
-					@foreach (var record in Model.WorkDay.Records)
-					{
-						//Чтобы не выводить прошлые записи от текущего времени. Например если сейчас 15:00 и не выводить записи за 9:00 и тд часов
-						if (record.Time.Hour > DateTime.Now.Hour)
-						{
-							//Если запись занята
-							if (!record.IsFree)
-							{
-								<button class="btn btn-danger m-2 ml-0">@record.Time.Hour:@(record.Time.Minute)0</button>
-							}
-							//Форма для записи
-							else
-							{
-								<form asp-page-handler="SelectTime" method="post"></form>
-								<input asp-for="Record.Time" type="submit" value="@record.Time.Hour:@(record.Time.Minute)0" class="btn btn-success m-2 ml-0" />
-							}
-						}
-					}
-				</div>*@
 			@* Форма ФИО *@
 
 			<form asp-page-handler="AddRecord" method="post" id="form" style="display:none">
