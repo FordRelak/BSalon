@@ -37,8 +37,8 @@ namespace BSalonWebApp.Pages
 
         //public IEnumerable<Record> Records { get; private set; }
 
-       
-        public WorkDay WorkDay { get; set; }
+
+        public List<WorkDay> WorkDay { get; set; } = new List<WorkDay>();
 
         public RecordModel(BSalonDbContext context) =>
             _context = context;
@@ -52,9 +52,7 @@ namespace BSalonWebApp.Pages
 
             //Records = _context.Records.AsEnumerable().Where(day => day);
 
-            WorkDay = new WorkDay(_context.Records.ToList(), DateTime.Now.Date);
-
-            Service = _context.Services.First(serviceTitle => serviceTitle.Title == title);
+            LoadProperties(title);
 
             return Page();
         }
@@ -75,16 +73,29 @@ namespace BSalonWebApp.Pages
 
                 //Records = _context.Records.AsEnumerable().Where(day => day);
 
-                WorkDay = new WorkDay(_context.Records.ToList(), DateTime.Now.Date);
-
-                Service = _context.Services.First(serviceTitle => serviceTitle.Title == title);
+                LoadProperties(title);
 
                 return Page();
             }
 
+            Record.ServiceID = Service.Id;
             _context.Records.Add(Record);
             await _context.SaveChangesAsync();
+
             return Page();
+        }
+
+        private void LoadProperties(string title)
+        {
+            var curDate = DateTime.Now;
+            var toDate = DateTime.Now.AddDays(30);
+            while (curDate < toDate)
+            {
+                WorkDay.Add(new WorkDay(_context.Records.ToList(), curDate));
+                curDate = curDate.AddDays(1);
+            }
+
+            Service = _context.Services.First(serviceTitle => serviceTitle.Title == title);
         }
     }
 }
