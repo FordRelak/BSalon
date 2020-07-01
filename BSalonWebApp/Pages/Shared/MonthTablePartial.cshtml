@@ -1,6 +1,5 @@
 ﻿
 @model List<BSalonWebApp.Models.WorkDay>
-@*BSalonWebApp.Pages.Shared.MonthTablePartialModel*@
 @{
 	var NumberDayOfWeek = (int)Model.First().Records.First().Time.DayOfWeek;
 	var offset = 0;
@@ -40,7 +39,12 @@
 						{
 							<td>
 								<div>
-									<input asp-page-handler="SelectTime" type="submit" formmethod="post" value="@string.Format("{0:M}", Model[i * 7 + z++].DateTime.Date)" />
+									@{
+										var year = Model[i * 7 + z].DateTime.Date.Year.ToString();
+										var month = Model[i * 7 + z].DateTime.Date.Month.ToString();
+										var day = Model[i * 7 + z].DateTime.Date.Day.ToString();
+									}
+									<a asp-page="/Record" asp-all-route-data='new Dictionary<string,string> { { "id", year }, {"name", month }, { "age", day } }'>@string.Format("{0:M}", Model[i * 7 + z++].DateTime.Date)</a>
 								</div>
 							</td>
 						}
@@ -52,7 +56,6 @@
 										var year = Model[i * 7 + z - offset].DateTime.Date.Year.ToString();
 										var month = Model[i * 7 + z - offset].DateTime.Date.Month.ToString();
 										var day = Model[i * 7 + z - offset].DateTime.Date.Day.ToString();
-										z++;
 									}
 									<a asp-page="/Record" asp-all-route-data='new Dictionary<string,string> { { "id", year }, {"name", month }, { "age", day } }'>@string.Format("{0:M}", Model[i * 7 + z++ - offset].DateTime.Date)</a>
 								</div>

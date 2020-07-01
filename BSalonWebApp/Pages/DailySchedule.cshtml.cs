@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using BSalonWebApp.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace BSalonWebApp.Pages.Shared
+namespace BSalonWebApp.Pages
 {
-    public class MonthTablePartialModel : PageModel
+    public class DailyScheduleModel : PageModel
     {
+        public void OnGet()
+        {
 
+        }
     }
 }

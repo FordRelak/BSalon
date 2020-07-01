@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace BSalonWebApp.Pages
 {
-    public class RecordModel : PageModel
+    public class DaysTableModel : PageModel
     {
         private readonly BSalonDbContext _context;
 
@@ -25,7 +25,7 @@ namespace BSalonWebApp.Pages
 
         public List<WorkDay> WorkDay { get; set; } = new List<WorkDay>();
 
-        public RecordModel(BSalonDbContext context) =>
+        public DaysTableModel(BSalonDbContext context) =>
             _context = context;
 
         public IActionResult OnGet(string title)
