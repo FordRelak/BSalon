@@ -53,3 +53,11 @@
 	.contact h3 {
 		margin-bottom: 10px;
 	}
+
+.table-bordered input {
+	overflow: visible;
+	background: none;
+	border: none;
+	outline: none;
+	cursor: pointer;
+}
