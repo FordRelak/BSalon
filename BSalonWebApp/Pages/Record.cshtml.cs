@@ -15,27 +15,12 @@ namespace BSalonWebApp.Pages
     {
         private readonly BSalonDbContext _context;
 
-        //[Display(Name = "Имя")]
-        //[Required, StringLength(13)]
-        //public string Name { get; set; }
-
-        //[Display(Name ="Номер телефона")]
-        //[Required, StringLength(11)]
-        //public string Phone { get; set; }
-
-        //[Display(Name ="Время")]
-        //[DataType(DataType.Time)]
-        //[Required]
-        //public DateTime SelectedTime { get; set; }
-
         [BindProperty(SupportsGet = true)]
         [Required]
         public Record Record { get; set; }
 
         [BindProperty(SupportsGet = true)]
         public Service Service { get; set; }
-
-        //public IEnumerable<Record> Records { get; private set; }
 
 
         public List<WorkDay> WorkDay { get; set; } = new List<WorkDay>();
@@ -48,19 +33,12 @@ namespace BSalonWebApp.Pages
             if (title is null)
             {
                 return Redirect(Url.Page("OnlineRecords"));
-            }
-
-            //Records = _context.Records.AsEnumerable().Where(day => day);
+            }            
 
             LoadProperties(title);
 
             return Page();
         }
-
-        //public void OnPostSelectedTime()
-        //{
-        //    Record.Time = 
-        //}
 
         public async Task<IActionResult> OnPostAddRecordAsync(string title)
         {

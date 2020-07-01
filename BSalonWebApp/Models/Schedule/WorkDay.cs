@@ -27,7 +27,7 @@ namespace BSalonWebApp.Models
                                         i + 9, 0, 0)
                 });
             }
-            Records = records1;
+            Records = records1.OrderBy(r=>r.Time.Hour).ToList();
 
             #region comment
             //int j = 0;

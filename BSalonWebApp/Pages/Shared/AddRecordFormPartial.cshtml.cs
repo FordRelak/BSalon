@@ -6,22 +6,17 @@ using BSalonWebApp.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace BSalonWebApp.Pages.Components.Records
+namespace BSalonWebApp.Pages.Shared
 {
-    public class DefaultModel : PageModel
+    public class AddRecordFormPartialModel : PageModel
     {
         private readonly BSalonDbContext _context;
-
-        public DefaultModel(BSalonDbContext context)
-        {
-            _context = context;
-        }
+        public AddRecordFormPartialModel(BSalonDbContext context)=>
+            _context=context;
 
         public void OnGet()
         {
-           
-        }
 
-        
+        }
     }
 }

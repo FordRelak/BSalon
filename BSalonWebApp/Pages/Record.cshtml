@@ -2,7 +2,7 @@
 @model BSalonWebApp.Pages.RecordModel
 @{
 	ViewData["Title"] = "Record";
-
+	
 }
 <link href="~/css/Record.css" rel="stylesheet" />
 
@@ -18,86 +18,52 @@
 			</a>
 		</div>
 		@* Название сервиса *@
-		<div class="mainrec">
-			<div class="recordd">
-				<h2>@Model.Service.Title</h2>
-				<p>@Model.Service.Price&#8381</p>
-				<button type="button" class="btn">Выбрать дату</button>
-			</div>
-
-			@* Расписание *@
-
-			<table class="table table-bordered">
-				<thead class="thead-dark">
-					<tr>
-						<th>Понедельник</th>
-						<th>Вторник</th>
-						<th>Среда</th>
-						<th>Четверг</th>
-						<th>Пятница</th>
-						<th>Суббота</th>
-						<th>Воскресенье</th>
-					</tr>
-				</thead>
-				@{					
-					@for (int i = 0; i < 4; i++)
-					{
-						int z = 0;
-						<tr class="">
-							@for (int j = 0; j < 7; j++)
-							{
-								if (((int)Model.WorkDay.First().Records.First().Time.DayOfWeek) - (j + 1) > 0 && i == 0)
-								{
-									<td></td>
-								}
-								else if (DateTime.Now.DayOfWeek == DayOfWeek.Monday && j != 0)
-								{
-									break;
-								}
-								else
-								{
-									<td>
-										@string.Format("{0:M}", Model.WorkDay[i * 7 + z].Records[z++].Time.Date)
-									</td>
-								}
-							}
-						</tr>
-					}
-				}
-
-			</table>
-			@* Форма ФИО *@
-
-			<form asp-page-handler="AddRecord" method="post" id="form" style="display:none">
-				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
-				<div class="form-group">
-					<label asp-for="Record.Name"></label>
-					<span asp-validation-for="Record.Name" class="text-danger"></span>
-					<input asp-for="Record.Name" type="text" class="form-control" /> <br />
-					<label asp-for="Record.SecondName"></label>
-					<span asp-validation-for="Record.SecondName" class="text-danger"></span>
-					<input asp-for="Record.SecondName" type="text" class="form-control" /><br />
-					<label asp-for="Record.MiddleName"></label>
-					<span asp-validation-for="Record.MiddleName" class="text-danger"></span>
-					<input asp-for="Record.MiddleName" type="text" class="form-control" /><br />
-					<label asp-for="Record.PhoneNumber"></label>
-					<span asp-validation-for="Record.PhoneNumber" class="text-danger"></span>
-					<input asp-for="Record.PhoneNumber" type="tel" class="form-control" /><br />
-					<label asp-for="Record.Time"></label>
-					<input asp-for="Record.Time" type="time" class="form-control" readonly />
-					<input asp-for="Service.Id" type="hidden" />
-					<input asp-for="Record.WorkerID" type="hidden" />
-					<input type="submit" class="form-control mt-2" />
-				</div>
-			</form>
-
-			<img src="~/imgs/temp.png" />
-			@* Контактная информация *@
-			<div class="contact">
-				<h3>Адрес и контактная информация</h3>
-				<h4>Эл. почта:</h4>
-			</div>
+	<div class="mainrec">
+		<div class="recordd">
+			<h2>@Model.Service.Title</h2>
+			<p>@Model.Service.Price&#8381</p>
+			<button type="button" class="btn">Выбрать дату</button>
 		</div>
+
+		@* Расписание *@
+
+		@{
+			await Html.RenderPartialAsync("MonthTablePartial", Model.WorkDay);
+		}
+
+		@* Форма ФИО *@
+		<iframe name="_blank" style="display:none"></iframe>
+		<form asp-page-handler="AddRecord" method="post" target="_blank" id="form" style="display:none">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<div class="form-group">
+				<label asp-for="Record.Name"></label>
+				<span asp-validation-for="Record.Name" class="text-danger"></span>
+				<input asp-for="Record.Name" type="text" class="form-control" /> <br />
+				<label asp-for="Record.SecondName"></label>
+				<span asp-validation-for="Record.SecondName" class="text-danger"></span>
+				<input asp-for="Record.SecondName" type="text" class="form-control" /><br />
+				<label asp-for="Record.MiddleName"></label>
+				<span asp-validation-for="Record.MiddleName" class="text-danger"></span>
+				<input asp-for="Record.MiddleName" type="text" class="form-control" /><br />
+				<label asp-for="Record.PhoneNumber"></label>
+				<span asp-validation-for="Record.PhoneNumber" class="text-danger"></span>
+				<input asp-for="Record.PhoneNumber" type="tel" class="form-control" /><br />
+				<label asp-for="Record.Time"></label>
+				<input asp-for="Record.Time" type="text" class="form-control" readonly />
+				<input asp-for="Service.Id" type="hidden" />
+				<input asp-for="Record.WorkerID" type="hidden" />
+				<input type="submit" class="form-control mt-2" />
+			</div>
+		</form>
+
+		<img src="~/imgs/temp.png" />
+		@* Контактная информация *@
+		<div class="contact">
+			<h3>Адрес и контактная информация</h3>
+			<h4>Эл. почта:</h4>
+		</div>
+	</div>
 	</div>
 </div>
 <script src="~/js/RecordShowForm.js"></script>
+<script src="~/js/RecordPage.js"></script>
