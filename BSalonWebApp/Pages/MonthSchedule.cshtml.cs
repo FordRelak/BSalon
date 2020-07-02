@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace BSalonWebApp.Pages
 {
-    public class DaysTableModel : PageModel
+    public class MonthScheduleModel : PageModel
     {
         private readonly BSalonDbContext _context;
 
@@ -25,7 +25,7 @@ namespace BSalonWebApp.Pages
 
         public List<WorkDay> WorkDay { get; set; } = new List<WorkDay>();
 
-        public DaysTableModel(BSalonDbContext context) =>
+        public MonthScheduleModel(BSalonDbContext context) =>
             _context = context;
 
         public IActionResult OnGet(string title)
@@ -33,7 +33,9 @@ namespace BSalonWebApp.Pages
             if (title is null)
             {
                 return Redirect(Url.Page("OnlineRecords"));
-            }            
+            }
+
+            ViewData["TitleForPartialView"] = title;
 
             LoadProperties(title);
 

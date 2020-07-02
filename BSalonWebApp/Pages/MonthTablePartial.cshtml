@@ -41,10 +41,10 @@
 								<div>
 									@{
 										var year = Model[i * 7 + z].DateTime.Date.Year.ToString();
-										var month = Model[i * 7 + z].DateTime.Date.Month.ToString();
-										var day = Model[i * 7 + z].DateTime.Date.Day.ToString();
+										var month = Model[i * 7 + z].DateTime.Date.Month.ToString("00");
+										var day = Model[i * 7 + z].DateTime.Date.Day.ToString("00");
+										<a asp-page="/DailySchedule" asp-all-route-data='new Dictionary<string,string> { {"title", ViewData["TitleForPartialView"].ToString() }, { "year", year }, {"month", month }, { "day", day } }'>@string.Format("{0:M}", Model[i * 7 + z++].DateTime.Date)</a>
 									}
-									<a asp-page="/Record" asp-all-route-data='new Dictionary<string,string> { { "id", year }, {"name", month }, { "age", day } }'>@string.Format("{0:M}", Model[i * 7 + z++].DateTime.Date)</a>
 								</div>
 							</td>
 						}
@@ -56,8 +56,8 @@
 										var year = Model[i * 7 + z - offset].DateTime.Date.Year.ToString();
 										var month = Model[i * 7 + z - offset].DateTime.Date.Month.ToString();
 										var day = Model[i * 7 + z - offset].DateTime.Date.Day.ToString();
+										<a asp-page="/DailySchedule" asp-all-route-data='new Dictionary<string,string> { { "year", year }, {"month", month }, { "day", day } }'>@string.Format("{0:M}", Model[i * 7 + z++ - offset].DateTime.Date)</a>
 									}
-									<a asp-page="/Record" asp-all-route-data='new Dictionary<string,string> { { "id", year }, {"name", month }, { "age", day } }'>@string.Format("{0:M}", Model[i * 7 + z++ - offset].DateTime.Date)</a>
 								</div>
 							</td>
 						}
