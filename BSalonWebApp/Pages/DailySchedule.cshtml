@@ -3,8 +3,43 @@
 @{
 	ViewData["Title"] = "Дневное расписание";
 }
+<link href="~/css/DailySchedule.css" rel="stylesheet" />
+<main class="">
 
-<main>
+	@* Форма ФИО *@
+	<form asp-page-handler="AddRecord" method="post" id="form">
+		<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+		<div class="form-group">
+			<label asp-for="Record.Name"></label>
+			<span asp-validation-for="Record.Name" class="text-danger"></span>
+			<input asp-for="Record.Name" type="text" class="form-control" /> <br />
+			<label asp-for="Record.SecondName"></label>
+			<span asp-validation-for="Record.SecondName" class="text-danger"></span>
+			<input asp-for="Record.SecondName" type="text" class="form-control" /><br />
+			<label asp-for="Record.MiddleName"></label>
+			<span asp-validation-for="Record.MiddleName" class="text-danger"></span>
+			<input asp-for="Record.MiddleName" type="text" class="form-control" /><br />
+			<label asp-for="Record.PhoneNumber"></label>
+			<span asp-validation-for="Record.PhoneNumber" class="text-danger"></span>
+			<input asp-for="Record.PhoneNumber" type="tel" class="form-control" /><br />
+
+			<label asp-for="Record.Time"></label>
+			<span asp-validation-for="Record.Time" class="text-danger"></span> <br />
+			<div class="btn-group btn-group-toggle" data-toggle="buttons">
+				@foreach (var record in Model.WorkDay.Records)
+				{
+					<label class="btn btn-@(record.IsFree?"success":"danger")">
+						<input asp-for="Record.Time" type="radio" value="@record.Time" />@string.Format("{0:t}", record.Time)
+					</label>
+				}
+			</div>
+			<input asp-for="Service.Id" type="hidden" />
+			<input asp-for="Record.WorkerID" type="hidden" />
+			<br /> 
+			<br />
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</div>
+	</form>
 
 </main>
 

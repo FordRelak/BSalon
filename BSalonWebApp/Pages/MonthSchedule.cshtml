@@ -32,31 +32,6 @@
 		}*@
 		@await Html.PartialAsync("MonthTablePartial", Model.WorkDay)
 
-		@* Форма ФИО *@
-		<iframe name="_blank" style="display:none"></iframe>
-		<form asp-page-handler="AddRecord" method="post" target="_blank" id="form" style="display:none">
-			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
-			<div class="form-group">
-				<label asp-for="Record.Name"></label>
-				<span asp-validation-for="Record.Name" class="text-danger"></span>
-				<input asp-for="Record.Name" type="text" class="form-control" /> <br />
-				<label asp-for="Record.SecondName"></label>
-				<span asp-validation-for="Record.SecondName" class="text-danger"></span>
-				<input asp-for="Record.SecondName" type="text" class="form-control" /><br />
-				<label asp-for="Record.MiddleName"></label>
-				<span asp-validation-for="Record.MiddleName" class="text-danger"></span>
-				<input asp-for="Record.MiddleName" type="text" class="form-control" /><br />
-				<label asp-for="Record.PhoneNumber"></label>
-				<span asp-validation-for="Record.PhoneNumber" class="text-danger"></span>
-				<input asp-for="Record.PhoneNumber" type="tel" class="form-control" /><br />
-				<label asp-for="Record.Time"></label>
-				<input asp-for="Record.Time" type="text" class="form-control" readonly />
-				<input asp-for="Service.Id" type="hidden" />
-				<input asp-for="Record.WorkerID" type="hidden" />
-				<input type="submit" class="form-control mt-2" />
-			</div>
-		</form>
-
 		<img src="~/imgs/temp.png" />
 		@* Контактная информация *@
 		<div class="contact">
