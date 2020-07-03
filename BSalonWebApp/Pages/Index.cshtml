@@ -39,15 +39,9 @@
 
 <div class="imageBlock">
 	<div class="imagelist">
-		<img src="~/imgs/temp.png" />
-		<img src="~/imgs/temp.png" />
-		<img src="~/imgs/temp.png" />
-		@for (int i = 0; i < 3; i++)
+		@for (int j = 1; j <= 20; j++)
 		{
-			<img src="~/imgs/temp.png" style="display:none;" />
-			<img src="~/imgs/temp.png" style="display:none;" />
-			<img src="~/imgs/temp.png" style="display:none;" />
-			<br />
+			<img src="~/imgs/rofl/@(j).jpg" style="@(j>=0&&j<4?"":" display:none;")" />
 		}
 	</div>
 	<button id="showMore">Показать ещё</button>
