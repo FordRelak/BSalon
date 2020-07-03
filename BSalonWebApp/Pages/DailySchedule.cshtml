@@ -28,7 +28,7 @@
 			<div class="btn-group btn-group-toggle" data-toggle="buttons">
 				@foreach (var record in Model.WorkDay.Records)
 				{
-					<label class="btn btn-@(record.IsFree?"success":"danger")">
+					<label class="btn btn-@(record.IsFree?"success":"danger") @(record.IsFree?"":"disabled")">
 						<input asp-for="Record.Time" type="radio" value="@record.Time" />@string.Format("{0:t}", record.Time)
 					</label>
 				}
