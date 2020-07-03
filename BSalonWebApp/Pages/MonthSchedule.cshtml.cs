@@ -1,4 +1,5 @@
 ﻿using BSalonWebApp.Data;
+using BSalonWebApp.ExtensionMethods;
 using BSalonWebApp.Models;
 using BSalonWebApp.Models.SalonServices;
 using Microsoft.AspNetCore.Mvc;
@@ -41,10 +42,11 @@ namespace BSalonWebApp.Pages
         {
             var curDate = DateTime.Now;
             var toDate = DateTime.Now.AddDays(30);
+            var tempRecords = _context.Records.ToList();
             while (curDate < toDate)
             {
-                WorkDay.Add(new WorkDay(_context.Records.ToList(), curDate));
-                curDate = curDate.AddDays(1);
+                WorkDay.Add(new WorkDay(tempRecords, curDate));
+                curDate = curDate.AddDays(1);           
             }
 
             Service = _context.Services.First(serviceTitle => serviceTitle.Title == title);
