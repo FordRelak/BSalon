@@ -16,8 +16,8 @@ namespace BSalonWebApp.Models
             DateTime = dataTime;
 
             List<Record> records1 = records.Where(record => record.Time.Date == DateTime.Date).OrderBy(r => r.Time.Hour).ToList();
-            var length = records1.Count();
-            for (int i = 0; i < 8 - length; i++)
+            
+            for (int i = 0; i < 8; i++)
             {
                 if (records1.Any(r=>r.Time.Hour==i+9))
                     continue;

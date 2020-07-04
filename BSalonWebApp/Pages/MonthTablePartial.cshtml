@@ -1,112 +1,70 @@
 ﻿
 @model List<BSalonWebApp.Models.WorkDay>
 @{
-    var NumberDayOfWeek = (int)Model.First().Records.First().Time.DayOfWeek;
-    var offset = 0;
+	var NumberDayOfWeek = (int)Model.First().Records.First().Time.DayOfWeek;
+	var offset = 0;
 }
 
 <table class="table table-bordered">
-    <thead class="thead-dark">
-        <tr>
-            <th>Понедельник</th>
-            <th>Вторник</th>
-            <th>Среда</th>
-            <th>Четверг</th>
-            <th>Пятница</th>
-            <th>Суббота</th>
-            <th>Воскресенье</th>
-        </tr>
-    </thead>
-    @*@{
-            @for (int i = 0; i < 5; i++)
-            {
-                int z = 0;
-                <tr class="">
-                    @for (int j = 0; j < 7; j++)
-                    {
-                        if ((NumberDayOfWeek - (j + 1)) > 0 && i == 0)
-                        {
-                            <td></td>
-                            offset++;
-                        }
-                        else if (DateTime.Now.DayOfWeek == DayOfWeek.Monday && j != 0)
-                        {
-                            break;
-                        }
-                        else
-                        {
-                            if (i == 0)
-                            {
-                                <td>
-                                    <div>
-                                        @{
-                                            var year = Model[i * 7 + z].DateTime.Date.Year.ToString();
-                                            var month = Model[i * 7 + z].DateTime.Date.Month.ToString("00");
-                                            var day = Model[i * 7 + z].DateTime.Date.Day.ToString("00");
-                                            <a asp-page="/DailySchedule" asp-all-route-data='new Dictionary<string,string> { {"title", ViewData["TitleForPartialView"].ToString() }, { "year", year }, {"month", month }, { "day", day } }'>@string.Format("{0:M}", Model[i * 7 + z++].DateTime.Date)</a>
-                                        }
-                                    </div>
-                                </td>
-                            }
-                            else
-                            {
-                                <td>
-                                    <div>
-                                        @{
-                                            var year = Model[i * 7 + z - offset].DateTime.Date.Year.ToString();
-                                            var month = Model[i * 7 + z - offset].DateTime.Date.Month.ToString();
-                                            var day = Model[i * 7 + z - offset].DateTime.Date.Day.ToString();
-                                            <a asp-page="/DailySchedule" asp-all-route-data='new Dictionary<string,string> { { "year", year }, {"month", month }, { "day", day } }'>@string.Format("{0:M}", Model[i * 7 + z++ - offset].DateTime.Date)</a>
-                                        }
-                                    </div>
-                                </td>
-                            }
-                        }
-                    }
-                </tr>
-            }
-        }*@
-    @for (int i = 0; i < 5; i++)
-    {
-        // Це моя параша, твою я закоментил, я её не успел дописать, мне отойти надо
-        <tr class=""> 
-            @for (int j = 1; j <= 7; j++)
-            {
-                <td>
+	<thead class="thead-dark">
+		<tr>
+			<th>Понедельник</th>
+			<th>Вторник</th>
+			<th>Среда</th>
+			<th>Четверг</th>
+			<th>Пятница</th>
+			<th>Суббота</th>
+			<th>Воскресенье</th>
+		</tr>
+	</thead>
+	@{
+		@for (int i = 0; i < 4; i++)
+		{
+			int z = 0;
+			<tr class="">
+				@for (int j = 0; j < 7; j++)
+				{
+					if ((NumberDayOfWeek - (j + 1)) > 0 && i == 0)
+					{
+						<td></td>
+						offset++;
+					}
+					else if (DateTime.Now.DayOfWeek == DayOfWeek.Monday && j != 0)
+					{
+						break;
+					}
+					else
+					{
+						if (i == 0)
+						{
+							<td>
+								<div>
+									@{
+										var year = Model[i * 7 + z].DateTime.Date.Year.ToString();
+										var month = Model[i * 7 + z].DateTime.Date.Month.ToString("00");
+										var day = Model[i * 7 + z].DateTime.Date.Day.ToString("00");
+										<a asp-page="/DailySchedule" asp-all-route-data='new Dictionary<string,string> { {"title", ViewData["TitleForPartialView"].ToString() }, { "year", year }, {"month", month }, { "day", day } }'>@string.Format("{0:M}", Model[i * 7 + z++].DateTime.Date)</a>
+									}
+								</div>
+							</td>
+						}
+						else
+						{
+							<td>
+								<div>
+									@{
+										var year = Model[i * 7 + z - offset].DateTime.Date.Year.ToString();
+										var month = Model[i * 7 + z - offset].DateTime.Date.Month.ToString();
+										var day = Model[i * 7 + z - offset].DateTime.Date.Day.ToString();
+										<a asp-page="/DailySchedule" asp-all-route-data='new Dictionary<string,string> { { "year", year }, {"month", month }, { "day", day } }'>@string.Format("{0:M}", Model[i * 7 + z++ - offset].DateTime.Date)</a>
+									}
+								</div>
+							</td>
+						}
+					}
+				}
+			</tr>
+		}
+	}
 
-                    @{
-                        if (Model.Count >= (i * 7 + j))
-                        {
-                            int DayOfWeekOffset = 0;
-                            while(Model[i * 7 + j - 1].DateTime.DayOfWeek != (DayOfWeek)(DayOfWeekOffset))
-                                
-                        }
-                        if ()
-                        {
-                                <div>
-                                    @{
-                                        var year = Model[i * 7 + j - offset].DateTime.Date.Year.ToString();
-                                        var month = Model[i * 7 + j - offset].DateTime.Date.Month.ToString();
-                                        var day = Model[i * 7 + j - offset].DateTime.Date.Day.ToString();
-                                        <a asp-page="/DailySchedule" asp-all-route-data='new Dictionary<string, string> { { "year", year }, { "month", month }, { "day", day } }'>@string.Format("{0:M}", Model[i * 7 + j - offset].DateTime.Date)</a>
-                                    }
-                                </div>
-                            }
-                            else
-                            {
-                                <div>
-
-                                </div>
-
-
-                            }
-
-                    }
-
-
-                </td>
-            }
-
-        </tr><!--ряд с ячейками тела таблицы-->
-    }
 </table>

@@ -73,15 +73,13 @@ namespace BSalonWebApp.Pages
                 return Page();
             }
 
-            Service = _context.Services.First(s => s.Title == title);
-
             Record.IsFree = false;
             Record.ServiceID = Service.Id;
 
             _context.Records.Add(Record);
             await _context.SaveChangesAsync();
 
-            return Page();
+            return RedirectToPage("OnlineRecords");
         }
 
         /// <summary>
