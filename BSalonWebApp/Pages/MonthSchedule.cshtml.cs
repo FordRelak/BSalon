@@ -36,8 +36,8 @@ namespace BSalonWebApp.Pages
             ViewData["TitleForPartialView"] = title;
 
             // LoadProperties(title);
-            CurDay = DateTime.Now.AddMonths(3);
-            LoadNewMonth(3);
+            CurDay = DateTime.Now.AddMonths(5);
+            LoadNewMonth(5);
             return Page();
         }
 
