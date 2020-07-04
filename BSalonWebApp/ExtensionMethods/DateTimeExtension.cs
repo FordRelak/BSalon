@@ -39,5 +39,24 @@ namespace BSalonWebApp.ExtensionMethods
                 return day;
             }
         }
+
+        public static DateTime GetBeginningOfMonth(this DateTime day)
+        {
+            var curMonth = day.Month;
+            if (day.Year > day.AddMonths(-1).Year)
+            {
+                return day;
+            }
+            else
+            {
+                //var prevMonth = curMonth - 1;
+                while (curMonth == day.Month)
+                {
+                    day = day.AddDays(-1);
+                }
+                day = day.AddDays(1);
+                return day;
+            }
+        }
     }
 }
