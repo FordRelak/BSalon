@@ -27,7 +27,7 @@ namespace BSalonWebApp.Models
         public string MiddleName { get; set; }
 
         [Display(Name = "Время")]
-        [DataType(DataType.Time)]
+        [DataType(DataType.DateTime)]
         [Required(ErrorMessage = "Необходимое поле")]
         public DateTime Time { get; set; }
 
@@ -36,7 +36,6 @@ namespace BSalonWebApp.Models
         [Required(ErrorMessage = "Необходимое поле")]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$",
                            ErrorMessage = "Неверный номер телефона (999-999-9999)")]
-
         public string PhoneNumber { get; set; }
 
         public int ServiceID { get; set; }

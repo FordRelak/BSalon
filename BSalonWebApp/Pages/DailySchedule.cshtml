@@ -24,20 +24,22 @@
 			<input asp-for="Record.PhoneNumber" type="tel" class="form-control" /><br />
 
 			<label asp-for="Record.Time"></label>
-			<span asp-validation-for="Record.Time" class="text-danger"></span> <br />
-			<div class="btn-group btn-group-toggle" data-toggle="buttons">
-				@foreach (var record in Model.WorkDay.Records)
-				{
-					<label class="btn btn-@(record.IsFree?"success":"danger") @(record.IsFree?"":"disabled")">
-						<input asp-for="Record.Time" type="radio" value="@record.Time" />@string.Format("{0:t}", record.Time)
-					</label>
-				}
-			</div>
+			<span class="text-danger">@ViewData["ErrorTime"]</span> <br />
+
+			@foreach (var record in Model.WorkDay.Records)
+			{
+				<div class="form_radio_btn">
+					<input asp-for="Record.Time" type="radio" value="@record.Time" id="Record_Time@(record.Time.Hour)" disabled="@(record.IsFree?null:"disabled")" />
+					<label for="Record_Time@(record.Time.Hour)">@string.Format("{0:t}", record.Time)</label>
+				</div>
+			}
+
 			<input asp-for="Service.Id" type="hidden" />
 			<input asp-for="Record.WorkerID" type="hidden" />
-			<br /> 
 			<br />
-			<button type="submit" class="btn btn-primary">Submit</button>
+			<br />
+			<button type="submit" class="btn btn-primary">Записаться</button>
+
 		</div>
 	</form>
 

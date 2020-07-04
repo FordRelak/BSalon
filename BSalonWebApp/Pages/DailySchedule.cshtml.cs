@@ -41,27 +41,59 @@ namespace BSalonWebApp.Pages
             if (!CheckAll(title, year, month, day))
                 return RedirectToPage("OnlineRecords");
 
-
             WorkDay = new WorkDay(_context.Records.ToList(), DateTime);
 
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAddRecordAsync()
+        public async Task<IActionResult> OnPostAddRecordAsync(string title, string year, string month, string day)
         {
             if (!ModelState.IsValid)
             {
-                return RedirectToPage("OnlineRecords");
+                if (title == null || year == null || month == null || day == null)
+                    return RedirectToPage("OnlineRecords");
+
+                if (!CheckAll(title, year, month, day))
+                    return RedirectToPage("OnlineRecords");
+
+                if (IfTimeIsIndicated())
+                    ViewData["ErrorTime"] = "Время не указано";
+
+                WorkDay = new WorkDay(_context.Records.ToList(), DateTime);
+
+                return Page();
             }
 
+            if (IfTimeIsIndicated())
+            {
+                ViewData["ErrorTime"] = "Время не указано";
+
+                WorkDay = new WorkDay(_context.Records.ToList(), DateTime);
+
+                return Page();
+            }
+
+            Service = _context.Services.First(s => s.Title == title);
+
+            Record.IsFree = false;
             Record.ServiceID = Service.Id;
+
             _context.Records.Add(Record);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("OnlineRecords");
+            return Page();
         }
 
-        private bool CheckAll(string title, string year, string month, string day) => 
+        /// <summary>
+        /// Указал ли пользователь время при заполнении формы
+        /// </summary>
+        /// <returns>true - время указано; false - дата не указано</returns>
+        private bool IfTimeIsIndicated() =>
+            Record.Time.Year == 1;
+
+
+
+        private bool CheckAll(string title, string year, string month, string day) =>
             TryParseTitle(title) && CheckDataDate(year, month, day) && TryParseDate();
 
         private bool TryParseTitle(string title)
