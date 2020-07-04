@@ -15,48 +15,7 @@ namespace BSalonWebApp.ExtensionMethods
             {
                 workDays.Add(new WorkDay(records, curDate));
                 curDate = curDate.AddDays(1);
-            }
-
-         
-
-        }
-
-        public static DateTime GetBeginningOfMonth(this DateTime day)
-        {
-            var curMonth = day.Month;
-            if (day.Year > day.AddMonths(-1).Year)
-            {
-                return day;
-            }
-            else
-            {
-                //var prevMonth = curMonth - 1;
-                while (curMonth == day.Month)
-                {
-                    day = day.AddDays(-1);
-                }
-                day = day.AddDays(1);
-                return day;
-            }
-        }
-
-        public static DateTime GetBeginningOfMonth(this DateTime day)
-        {
-            var curMonth = day.Month;
-            if (day.Year > day.AddMonths(-1).Year)
-            {
-                return day;
-            }
-            else
-            {
-                //var prevMonth = curMonth - 1;
-                while (curMonth == day.Month)
-                {
-                    day = day.AddDays(-1);
-                }
-                day = day.AddDays(1);
-                return day;
-            }
-        }
+            }       
+        }        
     }
 }
