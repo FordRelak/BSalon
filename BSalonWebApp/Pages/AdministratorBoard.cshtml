@@ -1,12 +1,11 @@
 ﻿@page
 @model BSalonWebApp.Pages.AdministratorBoardModel
-@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
-
-
-
-
+@{
+    var NumberDayOfWeek = (int)Model.WorkDays.First().Records.First().Time.DayOfWeek;
+    var offset = 0;
+    var DayCount = 0;
+    DateTime MonthStart = Model.WorkDays[0].DateTime;
+}
 
 <main>
 
@@ -14,43 +13,94 @@
     <div class="container">
         <h2>Панель администратора</h2>
 
-        <table class="table-bordered">
-            <tr>
-                <th>Понедельник</th>
-                <th>Вторник</th>
-                <th>Среда</th>
-                <th>Четверг</th>
-                <th>Пятница</th>
-                <th>Суббота</th>
-                <th>Воскресенье</th>
-            </tr> <!--ряд с ячейками заголовков-->
-            @for (int i = 0; i < 5; i++)
-            {
-                <tr>
-                    @for (int j = 1; j <= 7; j++)
-                    {
-                        <td>
+        <div>
+            <button id="tableButton">Таблица</button>
+            <button id="imageButton1">Пикча</button>
+            <button id="imageButton2">Видео</button>
+        </div>
 
-                            @{
-                                if (Model.WorkDays.Count >= (i * 7 + j))
-                                    if (Model.WorkDays[i * 7 + j - 1].DateTime.DayOfWeek == (DayOfWeek)(j - 1))
+        <table id="table1" class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Понедельник</th>
+                    <th>Вторник</th>
+                    <th>Среда</th>
+                    <th>Четверг</th>
+                    <th>Пятница</th>
+                    <th>Суббота</th>
+                    <th>Воскресенье</th>
+                </tr>
+            </thead>
+            @{
+                for (int i = 0; i < 5; i++)
+                {
+
+                    int z = 0;
+                    <tr class="">
+                        @for (int j = 0; j < 7; j++)
+                        {
+                            <td>
+                                @if (Model.WorkDays.Count > DayCount)
+                                    if ((NumberDayOfWeek - (j + 1)) > 0 && i == 0)
                                     {
-                                        <span></span>
+
+                                        offset++;
+                                    }
+                                    else if (MonthStart.DayOfWeek == DayOfWeek.Monday && j != 0)
+                                    {
+                                        break;
                                     }
                                     else
                                     {
-                                        <span>@string.Format("{0:M}", Model.WorkDays[i * 7 + j - 1].DateTime)</span>
+                                        if (i == 0)
+                                        {
+
+                                            <div>
+                                                @{
+                                                    var year = Model.WorkDays[i * 7 + z].DateTime.Date.Year.ToString();
+                                                    var month = Model.WorkDays[i * 7 + z].DateTime.Date.Month.ToString("00");
+                                                    var day = Model.WorkDays[i * 7 + z].DateTime.Date.Day.ToString("00");
+                                                    DayCount++;
+                                                    <a>@string.Format("{0:M}", Model.WorkDays[i * 7 + z++].DateTime.Date)</a>
+                                                }
+                                            </div>
+
+                                        }
+                                        else
+                                        {
+
+                                            <div>
+                                                @{
+                                                    var year = Model.WorkDays[i * 7 + z - offset].DateTime.Date.Year.ToString();
+                                                    var month = Model.WorkDays[i * 7 + z - offset].DateTime.Date.Month.ToString();
+                                                    var day = Model.WorkDays[i * 7 + z - offset].DateTime.Date.Day.ToString();
+                                                    DayCount++;
+                                                    <a>@string.Format("{0:M}", Model.WorkDays[i * 7 + z++ - offset].DateTime.Date)</a>
+                                                }
+                                            </div>
+
+                                        }
                                     }
+                            </td>
+                        }
 
-                            }
-
-
-                        </td>
-                    }
-
-                </tr><!--ряд с ячейками тела таблицы-->
+                    </tr>
+                }
             }
+
         </table>
+
+        <div id="image1">
+            <img src="~/imgs/rofl/1.jpg" />
+        </div>
+
+        <div id="image2">
+
+            <img src="~/imgs/rofl/11.jpg" />
+        </div>
     </div>
 
+    <script src="~/js/AdminBoard.js"></script>
+
 </main>
+

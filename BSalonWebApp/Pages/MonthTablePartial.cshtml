@@ -1,70 +1,79 @@
 ﻿
 @model List<BSalonWebApp.Models.WorkDay>
 @{
-	var NumberDayOfWeek = (int)Model.First().Records.First().Time.DayOfWeek;
-	var offset = 0;
+    var NumberDayOfWeek = (int)Model.First().Records.First().Time.DayOfWeek;
+    var offset = 0;
+    var DayCount = 0;
+    DateTime MonthStart = Model[0].DateTime;
 }
 
 <table class="table table-bordered">
-	<thead class="thead-dark">
-		<tr>
-			<th>Понедельник</th>
-			<th>Вторник</th>
-			<th>Среда</th>
-			<th>Четверг</th>
-			<th>Пятница</th>
-			<th>Суббота</th>
-			<th>Воскресенье</th>
-		</tr>
-	</thead>
-	@{
-		@for (int i = 0; i < 4; i++)
-		{
-			int z = 0;
-			<tr class="">
-				@for (int j = 0; j < 7; j++)
-				{
-					if ((NumberDayOfWeek - (j + 1)) > 0 && i == 0)
-					{
-						<td></td>
-						offset++;
-					}
-					else if (DateTime.Now.DayOfWeek == DayOfWeek.Monday && j != 0)
-					{
-						break;
-					}
-					else
-					{
-						if (i == 0)
-						{
-							<td>
-								<div>
-									@{
-										var year = Model[i * 7 + z].DateTime.Date.Year.ToString();
-										var month = Model[i * 7 + z].DateTime.Date.Month.ToString("00");
-										var day = Model[i * 7 + z].DateTime.Date.Day.ToString("00");
-										<a asp-page="/DailySchedule" asp-all-route-data='new Dictionary<string,string> { {"title", ViewData["TitleForPartialView"].ToString() }, { "year", year }, {"month", month }, { "day", day } }'>@string.Format("{0:M}", Model[i * 7 + z++].DateTime.Date)</a>
-									}
-								</div>
-							</td>
-						}
-						else
-						{
-							<td>
-								<div>
-									@{
-										var year = Model[i * 7 + z - offset].DateTime.Date.Year.ToString();
-										var month = Model[i * 7 + z - offset].DateTime.Date.Month.ToString();
-										var day = Model[i * 7 + z - offset].DateTime.Date.Day.ToString();
-										<a asp-page="/DailySchedule" asp-all-route-data='new Dictionary<string,string> { { "year", year }, {"month", month }, { "day", day } }'>@string.Format("{0:M}", Model[i * 7 + z++ - offset].DateTime.Date)</a>
-									}
-								</div>
-							</td>
-						}
-					}
-				}
-			</tr>
-		}
-	}
+    <thead class="thead-dark">
+        <tr>
+            <th>Понедельник</th>
+            <th>Вторник</th>
+            <th>Среда</th>
+            <th>Четверг</th>
+            <th>Пятница</th>
+            <th>Суббота</th>
+            <th>Воскресенье</th>
+        </tr>
+    </thead>
+    @{
+        @for (int i = 0; i < 5; i++)
+        {
+
+            int z = 0;
+            <tr class="">
+                @for (int j = 0; j < 7; j++)
+                {
+                    <td>
+                        @if (Model.Count > DayCount)
+                            if ((NumberDayOfWeek - (j + 1)) > 0 && i == 0)
+                            {
+
+                                offset++;
+                            }
+                            else if (MonthStart.DayOfWeek == DayOfWeek.Monday && j != 0)
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                if (i == 0)
+                                {
+
+                                    <div>
+                                        @{
+                                            var year = Model[i * 7 + z].DateTime.Date.Year.ToString();
+                                            var month = Model[i * 7 + z].DateTime.Date.Month.ToString("00");
+                                            var day = Model[i * 7 + z].DateTime.Date.Day.ToString("00");
+                                            DayCount++;
+                                            <a asp-page="/DailySchedule" asp-all-route-data='new Dictionary<string,string> { {"title", ViewData["TitleForPartialView"].ToString() }, { "year", year }, {"month", month }, { "day", day } }'>@string.Format("{0:M}", Model[i * 7 + z++].DateTime.Date)</a>
+                                        }
+                                    </div>
+
+                                }
+                                else
+                                {
+
+                                    <div>
+                                        @{
+                                            var year = Model[i * 7 + z - offset].DateTime.Date.Year.ToString();
+                                            var month = Model[i * 7 + z - offset].DateTime.Date.Month.ToString();
+                                            var day = Model[i * 7 + z - offset].DateTime.Date.Day.ToString();
+                                            DayCount++;
+                                            <a asp-page="/DailySchedule" asp-all-route-data='new Dictionary<string,string> { { "year", year }, {"month", month }, { "day", day } }'>@string.Format("{0:M}", Model[i * 7 + z++ - offset].DateTime.Date)</a>
+                                        }
+                                    </div>
+
+                                }
+                            }
+                    </td>
+                }
+
+            </tr>
+        }
+    }
 
 </table>
