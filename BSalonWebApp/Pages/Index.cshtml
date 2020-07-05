@@ -39,9 +39,9 @@
 
 <div class="imageBlock">
 	<div class="imagelist">
-		@for (int j = 1; j <= 20; j++)
+		@for (int j = 1; j <= (int)ViewData["AmountImgs"]; j++)
 		{
-			<img src="~/imgs/rofl/@(j).jpg" style="@(j>=0&&j<4?"":" display:none;")" />
+			<img src="~/imgs/@ViewData["Season"]/@(j).jpg" style="@(j>=0&&j<4?"":" display:none;")" />
 		}
 	</div>
 	<button id="showMore">Показать ещё</button>
