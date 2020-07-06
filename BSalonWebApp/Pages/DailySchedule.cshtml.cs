@@ -9,6 +9,7 @@ using BSalonWebApp.Models.SalonServices;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.Extensions.Logging;
 
 namespace BSalonWebApp.Pages
 {
@@ -30,8 +31,12 @@ namespace BSalonWebApp.Pages
         public WorkDay WorkDay { get; set; }
 
         private readonly BSalonDbContext _context;
-        public DailyScheduleModel(BSalonDbContext context) =>
+        private readonly ILogger _logger;
+        public DailyScheduleModel(BSalonDbContext context, ILogger<DailyScheduleModel> logger)
+        {
             _context = context;
+            _logger = logger;
+        }
 
         public IActionResult OnGet(string title, string year, string month, string day)
         {
@@ -40,9 +45,8 @@ namespace BSalonWebApp.Pages
 
             if (!CheckAll(title, year, month, day))
                 return RedirectToPage("OnlineRecords");
-
+            
             WorkDay = new WorkDay(_context.Records.ToList(), DateTime);
-
             return Page();
         }
 
