@@ -2,26 +2,33 @@
 
 <html>
 <head runat="server">
-    <meta name="viewport" content="width=device-width" />
+	<meta name="viewport" content="width=device-width" />
 
-    <link rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          asp-fallback-href="~/lib/twitter-bootstrap/css/bootstrap.min.css" />
-    <link href="~/css/AdministratorBoard.css" rel="stylesheet" />
-    <link href="~/css/Index.css" rel="stylesheet" />
+	<link rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"
+		  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		  asp-fallback-href="~/lib/twitter-bootstrap/css/bootstrap.min.css" />
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
-            asp-fallback-src="~/lib/jquery/jquery.min.js"
-            integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-            crossorigin="anonymous">
-    </script>
+	<link href="~/css/Index.css" rel="stylesheet" />
 
-    <title>@ViewBag.Title</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+			asp-fallback-src="~/lib/jquery/jquery.min.js"
+			asp-fallback-test="window.jQuery"
+			integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+			crossorigin="anonymous">
+	</script>
+
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+			asp-fallback-src="~/lib/twitter-bootstrap/js/bootstrap.min.js"
+			integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+			crossorigin="anonymous">
+	</script>
+
+	<title>@ViewBag.Title</title>
 </head>
 <body id="Body" runat="server">
     <div class="bglayout">
         <div class="title">
-            <span><a href="#">К НОГТЮ</a></span>
+            <span><a asp-page="Index">К НОГТЮ</a></span>
         </div>
 
         <div class="tabmenu">

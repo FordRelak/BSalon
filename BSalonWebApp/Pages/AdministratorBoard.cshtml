@@ -1,106 +1,29 @@
-﻿@page
+﻿@page "/AdministratorPage"
 @model BSalonWebApp.Pages.AdministratorBoardModel
 @{
-    var NumberDayOfWeek = (int)Model.WorkDays.First().Records.First().Time.DayOfWeek;
-    var offset = 0;
-    var DayCount = 0;
-    DateTime MonthStart = Model.WorkDays[0].DateTime;
+	int j = 0;
 }
+<link href="~/css/AdministratorBoard.css" rel="stylesheet" />
 
-<main>
-
-
-    <div class="container">
-        <h2>Панель администратора</h2>
-
-        <div>
-            <button id="tableButton">Таблица</button>
-            <button id="imageButton1">Пикча</button>
-            <button id="imageButton2">Видео</button>
-        </div>
-
-        <table id="table1" class="table table-bordered">
-            <thead class="thead-dark">
-                <tr>
-                    <th>Понедельник</th>
-                    <th>Вторник</th>
-                    <th>Среда</th>
-                    <th>Четверг</th>
-                    <th>Пятница</th>
-                    <th>Суббота</th>
-                    <th>Воскресенье</th>
-                </tr>
-            </thead>
-            @{
-                for (int i = 0; i < 5; i++)
-                {
-
-                    int z = 0;
-                    <tr class="">
-                        @for (int j = 0; j < 7; j++)
-                        {
-                            <td>
-                                @if (Model.WorkDays.Count > DayCount)
-                                    if ((NumberDayOfWeek - (j + 1)) > 0 && i == 0)
-                                    {
-
-                                        offset++;
-                                    }
-                                    else if (MonthStart.DayOfWeek == DayOfWeek.Monday && j != 0)
-                                    {
-                                        break;
-                                    }
-                                    else
-                                    {
-                                        if (i == 0)
-                                        {
-
-                                            <div>
-                                                @{
-                                                    var year = Model.WorkDays[i * 7 + z].DateTime.Date.Year.ToString();
-                                                    var month = Model.WorkDays[i * 7 + z].DateTime.Date.Month.ToString("00");
-                                                    var day = Model.WorkDays[i * 7 + z].DateTime.Date.Day.ToString("00");
-                                                    DayCount++;
-                                                    <a>@string.Format("{0:M}", Model.WorkDays[i * 7 + z++].DateTime.Date)</a>
-                                                }
-                                            </div>
-
-                                        }
-                                        else
-                                        {
-
-                                            <div>
-                                                @{
-                                                    var year = Model.WorkDays[i * 7 + z - offset].DateTime.Date.Year.ToString();
-                                                    var month = Model.WorkDays[i * 7 + z - offset].DateTime.Date.Month.ToString();
-                                                    var day = Model.WorkDays[i * 7 + z - offset].DateTime.Date.Day.ToString();
-                                                    DayCount++;
-                                                    <a>@string.Format("{0:M}", Model.WorkDays[i * 7 + z++ - offset].DateTime.Date)</a>
-                                                }
-                                            </div>
-
-                                        }
-                                    }
-                            </td>
-                        }
-
-                    </tr>
-                }
-            }
-
-        </table>
-
-        <div id="image1">
-            <img src="~/imgs/rofl/1.jpg" />
-        </div>
-
-        <div id="image2">
-
-            <img src="~/imgs/rofl/11.jpg" />
-        </div>
-    </div>
-
-    <script src="~/js/AdminBoard.js"></script>
-
+<main class="container">
+	<div id="accordion">
+		@foreach (var record in Model.Records)
+		{
+			<form method="post">
+				<div class="accordion-item">
+					<div class="accordion-item-title">@(string.Format("Запись на {0:M} в {0:t}",record.Time))</div>
+					<div class="accordion-item-content">
+						<div class="accordion-item-content-info">
+							<p>Имя: @record.Name</p>
+							<p>Фамилия: @record.SecondName</p>
+							<p>Телефон: @record.PhoneNumber</p>
+						</div>
+						<input asp-page-handler="Delete" asp-route-id="@record.ID" class="btn btn-danger" type="submit" value="Удалить">
+					</div>
+				</div>
+			</form>
+		}
+	</div>
 </main>
 
+<script src="~/js/AdminBoard.js"></script>

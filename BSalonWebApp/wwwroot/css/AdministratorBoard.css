@@ -1,38 +1,39 @@
-﻿
-.WorkDayTable {
-    border-width: medium;
+﻿body {
+	background: none;
 }
 
-.container > h2 {
-    margin-top: 50px;
-    text-align: center;
+p {
+	margin: 0;
+	padding: 0;
 }
 
-.table_custom {
-    border: 2px solid;
-    border-collapse: collapse;
-    table-layout: fixed;
-    width: 100%;
+#accordion {
+	display: flex;
+	flex-direction: column;
 }
 
-
-
-th {
-    border-bottom: 1px solid;
-    padding: 10px;
-    text-align: center;
-    border-right: 1px solid;
+.accordion-item {
+	border: 2px solid #000000;
+	margin-bottom: 10px;
+	overflow: hidden;
+	height: 30px;
+	padding: 0 10px;
+	transition: height 0.3s linear;
 }
 
-td {
-    border: 0px solid;
-    /*  padding: 10px 10px 10px 10px;*/
-    margin: 0px;
-    padding: 20px 20px 20px 20px;
-    text-align: center;
+.accordion-item-title {
+	cursor: pointer;
+	font-size: 18px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
 }
 
-.table-bordered span {
-    border: 1px solid;
-    padding: 10px 36px;
+.accordion-item-content {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.accordion-item.accordion-item--active {
+	height: 110px;
 }

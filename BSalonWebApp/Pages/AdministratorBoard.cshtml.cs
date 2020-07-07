@@ -14,33 +14,31 @@ namespace BSalonWebApp.Pages
     public class AdministratorBoardModel : PageModel
     {
         private readonly BSalonDbContext _context;
-
-        [BindProperty]
-        public IList<Service> Services { get; set; }
-
-        [BindProperty]
-        public IList<Record> Records { get; set; }
-
-        public List<WorkDay> WorkDays { get; set; } = new List<WorkDay>();
-
         public AdministratorBoardModel(BSalonDbContext context) =>
             _context = context;
 
-        public async Task OnGetAsync()
-        { 
-            Services = await _context.Services.ToListAsync();
-            //Records = await _context.Records.ToListAsync();
-            //var temp = _context.Records.First(x => x.Time.Date == DateTime.Now.Date);
+        public Record Record { get; set; }
 
-            var DateNow = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
-            var DateNow1 = new DateTime(DateNow.Year, DateNow.Month + 1, 1);
-            int counter = 0;
-            while (DateNow.AddDays(counter).Month < DateNow1.Month)
+        public List<Record> Records { get; set; }
+
+        public IActionResult OnGet()
+        {
+            Records = _context.Records.ToList();
+
+            return Page();
+        }
+
+        public async Task<IActionResult> OnPostDeleteAsync(int id)
+        {
+            var record = await _context.Records.FindAsync(id);
+            if (record != null)
             {
-                WorkDays.Add(new WorkDay(_context.Records.ToList(), DateNow.AddDays(counter++) ));
+                _context.Records.Remove(record);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("/AdministratorBoard");
             }
 
-            //WorkDays.Add(new WorkDay(_context.Records.ToList(), DateTime.Now.Date));
+            return NotFound();
         }
     }
 }
