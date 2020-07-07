@@ -25,6 +25,10 @@
     <Folder Include="Models\SalonServices\Services\NailDesignType\" />
     <Folder Include="Models\SalonServices\Services\DepilationType\" />
     <Folder Include="Models\SalonServices\Services\NailCoatingType\" />
+    <Folder Include="wwwroot\imgs\Winter\" />
+    <Folder Include="wwwroot\imgs\Summer\" />
+    <Folder Include="wwwroot\imgs\Autumm\" />
+    <Folder Include="wwwroot\imgs\Spring\" />
   </ItemGroup>
 
 </Project>
