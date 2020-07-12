@@ -6,19 +6,22 @@
 <link href="~/css/AdministratorBoard.css" rel="stylesheet" />
 
 <main class="container">
+	<div id="notification"></div>
 	<div id="accordion">
 		@foreach (var record in Model.Records)
 		{
 			<form method="post">
 				<div class="accordion-item">
 					<div class="accordion-item-title">@(string.Format("Запись на {0:M} в {0:t}",record.Time))</div>
-					<div class="accordion-item-content">
-						<div class="accordion-item-content-info">
-							<p>Имя: @record.Name</p>
-							<p>Фамилия: @record.SecondName</p>
-							<p>Телефон: @record.PhoneNumber</p>
+					<div class="accordion-item-slide">
+						<div class="accordion-item-content">
+							<div class="accordion-item-content-info">
+								<p>Имя: @record.Name</p>
+								<p>Фамилия: @record.SecondName</p>
+								<p>Телефон: @record.PhoneNumber</p>
+							</div>
+							<input asp-page-handler="Delete" asp-route-id="@record.ID" class="btn btn-danger" type="button" value="Удалить">
 						</div>
-						<input asp-page-handler="Delete" asp-route-id="@record.ID" class="btn btn-danger" type="submit" value="Удалить">
 					</div>
 				</div>
 			</form>

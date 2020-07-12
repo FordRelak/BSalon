@@ -28,17 +28,17 @@ namespace BSalonWebApp.Pages
             return Page();
         }
 
-        public async Task<IActionResult> OnPostDeleteAsync(int id)
+        public async /*Task<IActionResult>*/ void OnPostDeleteAsync(int id)
         {
-            var record = await _context.Records.FindAsync(id);
-            if (record != null)
-            {
-                _context.Records.Remove(record);
-                await _context.SaveChangesAsync();
-                return RedirectToPage("/AdministratorBoard");
-            }
-
-            return NotFound();
+            //var record = await _context.Records.FindAsync(id);
+            //if (record != null)
+            //{
+            //    _context.Records.Remove(record);
+            //    await _context.SaveChangesAsync();
+            //    return RedirectToPage("/AdministratorBoard");
+            //}
+            //return RedirectToPage("/AdministratorBoard");
+            //return NotFound();
         }
     }
 }

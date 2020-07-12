@@ -22,6 +22,8 @@ namespace BSalonWebApp
                                  User ID=Misha; Password=789xxx44XX; Connect Timeout=30;
                                  Encrypt=False; TrustServerCertificate=False;
                                  ApplicationIntent=ReadWrite; MultiSubnetFailover=False"));
+
+            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -37,9 +39,11 @@ namespace BSalonWebApp
 
             app.UseStaticFiles();
 
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();  // Добавляем маршрутизацию для RazorPages
+                endpoints.MapControllers();
             });
         }
     }

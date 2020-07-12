@@ -16,9 +16,9 @@ p {
 	border: 2px solid #000000;
 	margin-bottom: 10px;
 	overflow: hidden;
-	height: 30px;
+	height: auto;
 	padding: 0 10px;
-	transition: height 0.3s linear;
+	/*transition: height 0.3s linear;*/
 }
 
 .accordion-item-title {
@@ -27,13 +27,13 @@ p {
 	-webkit-user-select: none;
 	-moz-user-select: none;
 }
-
+.accordion-item-slide {
+	display:none;
+}
 .accordion-item-content {
+	display: none;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-}
-
-.accordion-item.accordion-item--active {
-	height: 110px;
+	height: auto;
 }
