@@ -1,0 +1,44 @@
+﻿@page
+@model BSalonWebApp.Pages.Account.LoginModel
+@{
+	ViewData["Title"] = "Login";
+}
+
+<style>
+	body {
+		background: none;
+	}
+	footer {
+		position: fixed;
+		bottom: 0;
+		text-align: center;
+		display: flex;
+		width: 100%;
+		align-content: center;
+	}
+</style>
+
+<div class="container text-center">
+	<form method="post" class="form-group">
+		<div asp-validation-summary="All">
+		</div>
+		<div>
+			<label>
+				Логин
+				<input asp-for="Input.Login" class="form-control" />
+			</label>
+			<span asp-validation-for="Input.Login"></span>
+		</div>
+		<div>
+			<label>
+				Пароль
+				<input asp-for="Input.Password" class="form-control" />
+			</label>
+			<span asp-validation-for="Input.Password"></span>
+		</div>
+		<div>
+			<button type="submit" class="btn btn-light">Войти</button>
+		</div>
+	</form>
+</div>
+
