@@ -26,17 +26,20 @@ namespace BSalonWebApp
                 });
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddCookie();
+                .AddCookie(options =>
+                {
+                    options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
+                });
 
-            services.AddDbContext<BSalonDbContext>(o =>
-                o.UseSqlServer(@"Data Source=88.135.50.215; Initial Catalog=BSalon;
+            services.AddDbContext<BSalonDbContext>(options =>
+                options.UseSqlServer(@"Data Source=88.135.50.215; Initial Catalog=BSalon;
                                  User ID=Misha; Password=789xxx44XX; Connect Timeout=30;
                                  Encrypt=False; TrustServerCertificate=False;
                                  ApplicationIntent=ReadWrite; MultiSubnetFailover=False"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -45,6 +48,7 @@ namespace BSalonWebApp
             }
             else
             {
+                app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
 
